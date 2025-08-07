@@ -1,29 +1,27 @@
-"use client"
-
-import { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { MapPin, Globe, Users, Calendar, Clock, Search, Filter, Heart } from "lucide-react"
-import Script from "next/script"
+import { MapPin, Globe, Users, Calendar, Clock } from "lucide-react"
+
+// Dynamic import with no SSR to prevent hydration issues
+const TSMLMeetingFinder = dynamic(
+  () => import("@/components/tsml-meeting-finder"),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center h-[600px] text-muted-foreground">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p>Loading meeting finder...</p>
+        </div>
+      </div>
+    )
+  }
+)
 
 export default function MeetingsPage() {
-  const [savedMeetings, setSavedMeetings] = useState<string[]>([])
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    // Load saved meetings from localStorage
-    const saved = localStorage.getItem("saved-meetings")
-    if (saved) {
-      setSavedMeetings(JSON.parse(saved))
-    }
-  }, [])
-
-  const handleTSMLLoad = () => {
-    setIsLoaded(true)
-  }
-
   return (
     <div className="container max-w-7xl py-10">
       <div className="mb-8">
@@ -90,39 +88,16 @@ export default function MeetingsPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {/* TSML UI Container */}
-          <div id="tsml-ui" className="min-h-[600px]">
-            {!isLoaded && (
-              <div className="flex items-center justify-center h-[600px] text-muted-foreground">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                  <p>Loading meeting finder...</p>
-                </div>
+          <Suspense fallback={
+            <div className="flex items-center justify-center h-[600px] text-muted-foreground">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                <p>Loading meeting finder...</p>
               </div>
-            )}
-          </div>
-
-          {/* TSML UI Script */}
-          <Script
-            src="https://tsml-ui.code4recovery.org/app.js"
-            onLoad={handleTSMLLoad}
-            strategy="lazyOnload"
-          />
-          <Script
-            id="tsml-config"
-            strategy="lazyOnload"
-            dangerouslySetInnerHTML={{
-              __html: `
-                var tsml_react_config = {
-                  timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                  map: {
-                    key: '',
-                    style: ''
-                  }
-                };
-              `
-            }}
-          />
+            </div>
+          }>
+            <TSMLMeetingFinder />
+          </Suspense>
         </CardContent>
       </Card>
 
