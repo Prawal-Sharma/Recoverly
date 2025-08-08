@@ -36,9 +36,29 @@ const programs = [
     href: "/programs/celebrate",
     description: "Christian-based 12-step program",
   },
+  {
+    title: "LifeRing",
+    href: "/programs/lifering",
+    description: "Secular, self-directed recovery approach",
+  },
+  {
+    title: "Refuge Recovery",
+    href: "/programs/refuge",
+    description: "Buddhist-based addiction recovery program",
+  },
 ]
 
 const resources = [
+  {
+    title: "CBT Tools",
+    href: "/resources/cbt",
+    description: "Cognitive Behavioral Therapy exercises",
+  },
+  {
+    title: "DBT Skills",
+    href: "/resources/dbt",
+    description: "Dialectical Behavior Therapy modules",
+  },
   {
     title: "First Meeting Guide",
     href: "/resources/first-meeting",

@@ -268,6 +268,468 @@ export const programs: Program[] = [
       "Those preferring action-based recovery"
     ],
     website: "https://refugerecovery.org"
+  },
+  {
+    id: "na",
+    name: "NA",
+    fullName: "Narcotics Anonymous",
+    description: "A 12-step program for recovery from drug addiction, adapted from AA principles.",
+    approach: "spiritual",
+    founded: "1953",
+    philosophy: "Recovery from the disease of addiction through working the 12 steps and helping other addicts.",
+    keyPrinciples: [
+      "Complete abstinence from all drugs",
+      "Addiction as a disease",
+      "Spiritual principles over specific substances",
+      "Unity and service",
+      "Anonymity and non-affiliation"
+    ],
+    meetingFormat: "Group meetings with readings, speaker shares, and open discussion. Various meeting formats available.",
+    pros: [
+      "Addresses all drug addictions",
+      "Worldwide availability",
+      "Free to attend",
+      "Strong fellowship",
+      "24-hour support network"
+    ],
+    cons: [
+      "Spiritual focus may not suit everyone",
+      "Abstinence-only approach",
+      "Can be triggering to hear drug stories",
+      "Quality varies by group"
+    ],
+    bestFor: [
+      "People with drug addiction",
+      "Those seeking spiritual approach",
+      "Individuals wanting peer support",
+      "People needing structure"
+    ],
+    notIdealFor: [
+      "Those preferring secular approaches",
+      "People wanting moderation",
+      "Individuals uncomfortable with spirituality"
+    ],
+    website: "https://na.org"
+  },
+  {
+    id: "alanon",
+    name: "Al-Anon",
+    fullName: "Al-Anon Family Groups",
+    description: "Support groups for families and friends of alcoholics, whether the alcoholic is still drinking or not.",
+    approach: "spiritual",
+    founded: "1951",
+    philosophy: "Recovery from the effects of living with an alcoholic through the 12 steps and mutual support.",
+    keyPrinciples: [
+      "Focus on your own recovery",
+      "Detachment with love",
+      "You didn't cause it, can't control it, can't cure it",
+      "Let go and let God",
+      "Keep the focus on yourself"
+    ],
+    meetingFormat: "Group meetings with topic discussions, step work, and sharing experiences.",
+    pros: [
+      "Specifically for family members",
+      "Worldwide availability",
+      "Free to attend",
+      "Alateen for teenagers",
+      "Literature and resources"
+    ],
+    cons: [
+      "Spiritual focus",
+      "Can feel victim-focused to some",
+      "May enable codependency",
+      "Limited to alcohol focus"
+    ],
+    bestFor: [
+      "Family members of alcoholics",
+      "Spouses and partners",
+      "Adult children of alcoholics",
+      "Those dealing with alcoholic loved ones"
+    ],
+    notIdealFor: [
+      "The alcoholic themselves",
+      "Those preferring action-oriented approaches",
+      "People wanting professional therapy"
+    ],
+    website: "https://al-anon.org"
+  },
+  {
+    id: "aca",
+    name: "ACA",
+    fullName: "Adult Children of Alcoholics",
+    description: "A 12-step program for adults who grew up in alcoholic or dysfunctional families.",
+    approach: "spiritual",
+    founded: "1978",
+    philosophy: "Healing from childhood trauma and dysfunction through reparenting ourselves and breaking generational patterns.",
+    keyPrinciples: [
+      "Identifying the 14 traits of adult children",
+      "Inner child work",
+      "Reparenting ourselves",
+      "Breaking the cycle",
+      "Grieving childhood losses"
+    ],
+    meetingFormat: "Topic meetings, step study groups, and workbook meetings focused on healing childhood wounds.",
+    pros: [
+      "Addresses root causes",
+      "Trauma-informed approach",
+      "Breaking generational patterns",
+      "Deep emotional work",
+      "Supportive community"
+    ],
+    cons: [
+      "Can be emotionally intense",
+      "Focuses on past",
+      "May retraumatize without proper support",
+      "Progress can be slow"
+    ],
+    bestFor: [
+      "Adults from dysfunctional families",
+      "Children of alcoholics/addicts",
+      "Those with childhood trauma",
+      "People seeking deep healing"
+    ],
+    notIdealFor: [
+      "Those wanting immediate symptom relief",
+      "People uncomfortable with emotional work",
+      "Individuals preferring present-focused approaches"
+    ],
+    website: "https://adultchildren.org"
+  },
+  {
+    id: "coda",
+    name: "CoDA",
+    fullName: "Codependents Anonymous",
+    description: "A 12-step program for people seeking healthy, loving relationships.",
+    approach: "spiritual",
+    founded: "1986",
+    philosophy: "Recovery from codependency through developing healthy relationships with self, others, and Higher Power.",
+    keyPrinciples: [
+      "Identifying codependent patterns",
+      "Developing healthy boundaries",
+      "Self-care and self-love",
+      "Interdependence vs codependence",
+      "Emotional sobriety"
+    ],
+    meetingFormat: "Topic meetings, step studies, and pattern workshops focused on relationship recovery.",
+    pros: [
+      "Addresses relationship patterns",
+      "Helps with boundaries",
+      "Supportive community",
+      "Free to attend",
+      "Complements other programs"
+    ],
+    cons: [
+      "Can feel vague or unfocused",
+      "Slow progress",
+      "May overanalyze relationships",
+      "Limited scientific backing"
+    ],
+    bestFor: [
+      "People with relationship issues",
+      "Those who lose themselves in relationships",
+      "Individuals with poor boundaries",
+      "People from dysfunctional families"
+    ],
+    notIdealFor: [
+      "Those wanting quick fixes",
+      "People preferring concrete goals",
+      "Individuals uncomfortable with spiritual concepts"
+    ],
+    website: "https://coda.org"
+  },
+  {
+    id: "sos",
+    name: "SOS",
+    fullName: "Secular Organizations for Sobriety",
+    description: "A non-religious, self-empowerment approach to recovery from alcohol and drug addiction.",
+    approach: "secular",
+    founded: "1985",
+    philosophy: "Sobriety through personal responsibility, self-reliance, and the power of the sober self.",
+    keyPrinciples: [
+      "Sobriety is Priority #1",
+      "Personal responsibility",
+      "Self-reliance and self-determination",
+      "No supernatural beliefs required",
+      "Rational decision-making"
+    ],
+    meetingFormat: "Crosstalk meetings where members can directly respond to and support each other.",
+    pros: [
+      "Completely secular",
+      "Self-directed recovery",
+      "Crosstalk encouraged",
+      "Free to attend",
+      "Respects individual paths"
+    ],
+    cons: [
+      "Limited availability",
+      "Less structured than 12-step",
+      "Smaller community",
+      "Fewer resources"
+    ],
+    bestFor: [
+      "Atheists and agnostics",
+      "Those preferring self-reliance",
+      "People wanting secular support",
+      "Individuals valuing personal responsibility"
+    ],
+    notIdealFor: [
+      "Those wanting spiritual approach",
+      "People needing extensive structure",
+      "Individuals preferring larger communities"
+    ],
+    website: "https://www.sossobriety.org"
+  },
+  {
+    id: "hams",
+    name: "HAMS",
+    fullName: "Harm Reduction, Abstinence, and Moderation Support",
+    description: "A peer support group offering flexible goals from safer drinking to reduced drinking to quitting.",
+    approach: "secular",
+    founded: "2007",
+    philosophy: "Better is better - any positive change in drinking habits is an improvement worth celebrating.",
+    keyPrinciples: [
+      "You choose your own goal",
+      "Harm reduction strategies",
+      "No judgment or coercion",
+      "Better is better",
+      "17 optional elements"
+    ],
+    meetingFormat: "Online forums, chat rooms, and some in-person meetings with peer support.",
+    pros: [
+      "Flexible goals",
+      "Non-judgmental",
+      "Harm reduction focus",
+      "Online accessibility",
+      "Evidence-based strategies"
+    ],
+    cons: [
+      "May enable continued drinking",
+      "Not for severe addiction",
+      "Limited in-person meetings",
+      "Less accountability"
+    ],
+    bestFor: [
+      "Problem drinkers",
+      "Those wanting moderation",
+      "People not ready for abstinence",
+      "Individuals seeking flexibility"
+    ],
+    notIdealFor: [
+      "Severe alcohol dependence",
+      "Those needing abstinence",
+      "People wanting strict structure"
+    ],
+    website: "https://hams.cc"
+  },
+  {
+    id: "mm",
+    name: "MM",
+    fullName: "Moderation Management",
+    description: "A behavioral change program for problem drinkers seeking to moderate their alcohol consumption.",
+    approach: "secular",
+    founded: "1994",
+    philosophy: "Problem drinking is a learned behavior that can be modified through self-management and behavioral change.",
+    keyPrinciples: [
+      "9-step program",
+      "30-day abstinence period",
+      "Moderate drinking guidelines",
+      "Self-monitoring tools",
+      "Cognitive-behavioral techniques"
+    ],
+    meetingFormat: "Online and in-person meetings focused on moderation strategies and support.",
+    pros: [
+      "Moderation option",
+      "Evidence-based",
+      "Clear guidelines",
+      "Self-assessment tools",
+      "CBT techniques"
+    ],
+    cons: [
+      "Not for severe addiction",
+      "Requires strong self-control",
+      "May delay needed abstinence",
+      "Limited availability"
+    ],
+    bestFor: [
+      "Early-stage problem drinkers",
+      "Those wanting to moderate",
+      "People with strong self-control",
+      "Individuals preferring CBT approach"
+    ],
+    notIdealFor: [
+      "Severe alcohol dependence",
+      "Those with liver disease",
+      "People unable to moderate"
+    ],
+    website: "https://moderation.org"
+  },
+  {
+    id: "wfs",
+    name: "WFS",
+    fullName: "Women for Sobriety",
+    description: "A self-help program specifically designed for women overcoming alcohol and drug addiction.",
+    approach: "secular",
+    founded: "1975",
+    philosophy: "Recovery through positive thinking, self-discovery, and emotional and spiritual growth tailored for women.",
+    keyPrinciples: [
+      "13 Acceptance Statements",
+      "Positive thinking",
+      "Emotional and spiritual growth",
+      "Taking responsibility",
+      "Creating a new life"
+    ],
+    meetingFormat: "Women-only meetings focusing on building self-esteem and addressing women-specific issues.",
+    pros: [
+      "Women-specific focus",
+      "Addresses trauma and shame",
+      "Positive, empowering approach",
+      "Small, intimate groups",
+      "Emphasis on emotional growth"
+    ],
+    cons: [
+      "Limited to women",
+      "Smaller network",
+      "Less availability",
+      "May feel too positive for some"
+    ],
+    bestFor: [
+      "Women in recovery",
+      "Those dealing with shame",
+      "Women seeking empowerment",
+      "Individuals wanting positive focus"
+    ],
+    notIdealFor: [
+      "Men",
+      "Those preferring co-ed groups",
+      "People wanting larger networks"
+    ],
+    website: "https://womenforsobriety.org"
+  },
+  {
+    id: "ga",
+    name: "GA",
+    fullName: "Gamblers Anonymous",
+    description: "A 12-step program for people with gambling addiction seeking to stop gambling entirely.",
+    approach: "spiritual",
+    founded: "1957",
+    philosophy: "Recovery from compulsive gambling through abstinence, the 12 steps, and helping other gamblers.",
+    keyPrinciples: [
+      "Complete abstinence from gambling",
+      "20 questions for self-diagnosis",
+      "Unity and recovery",
+      "Making financial amends",
+      "Rebuilding trust"
+    ],
+    meetingFormat: "Group meetings with GA literature, personal stories, and mutual support.",
+    pros: [
+      "Specifically for gambling",
+      "Proven 12-step model",
+      "Gam-Anon for families",
+      "Financial recovery focus",
+      "Free to attend"
+    ],
+    cons: [
+      "Abstinence-only",
+      "Limited availability in some areas",
+      "Spiritual focus",
+      "May not address underlying issues"
+    ],
+    bestFor: [
+      "Compulsive gamblers",
+      "Those with gambling debts",
+      "People losing control",
+      "Individuals seeking abstinence"
+    ],
+    notIdealFor: [
+      "Casual gamblers",
+      "Those wanting moderation",
+      "People preferring secular approaches"
+    ],
+    website: "https://www.gamblersanonymous.org"
+  },
+  {
+    id: "saa",
+    name: "SAA",
+    fullName: "Sex Addicts Anonymous",
+    description: "A 12-step program for people seeking recovery from addictive sexual behavior.",
+    approach: "spiritual",
+    founded: "1977",
+    philosophy: "Recovery from sex addiction through defining personal sobriety, working the steps, and helping others.",
+    keyPrinciples: [
+      "Three circles of behavior",
+      "Personal sobriety definition",
+      "Accountability and honesty",
+      "Healthy sexuality",
+      "Spiritual principles"
+    ],
+    meetingFormat: "Gender-specific and mixed meetings with sharing and step work.",
+    pros: [
+      "Addresses sex addiction",
+      "Flexible sobriety definition",
+      "Safe, confidential space",
+      "Partners programs available",
+      "Literature and tools"
+    ],
+    cons: [
+      "Shame and stigma",
+      "Can be triggering",
+      "Limited availability",
+      "Spiritual focus"
+    ],
+    bestFor: [
+      "Sex addicts",
+      "Those with compulsive sexual behavior",
+      "People seeking accountability",
+      "Individuals wanting recovery"
+    ],
+    notIdealFor: [
+      "Those uncomfortable with topic",
+      "People wanting quick fixes",
+      "Individuals preferring therapy only"
+    ],
+    website: "https://saa-recovery.org"
+  },
+  {
+    id: "oa",
+    name: "OA",
+    fullName: "Overeaters Anonymous",
+    description: "A 12-step program for people with eating disorders including overeating, undereating, and bulimia.",
+    approach: "spiritual",
+    founded: "1960",
+    philosophy: "Recovery from compulsive eating through abstinence from compulsive eating behaviors and working the 12 steps.",
+    keyPrinciples: [
+      "Abstinence from compulsive eating",
+      "No specific food plans",
+      "Physical, emotional, spiritual recovery",
+      "Tools of recovery",
+      "Sponsor guidance"
+    ],
+    meetingFormat: "Various meeting types including speaker, literature, and writing meetings.",
+    pros: [
+      "Addresses all eating disorders",
+      "No weigh-ins or diets",
+      "Free to attend",
+      "Worldwide availability",
+      "Multiple meeting formats"
+    ],
+    cons: [
+      "Can be food-focused",
+      "Abstinence hard to define",
+      "May trigger eating disorders",
+      "Spiritual approach"
+    ],
+    bestFor: [
+      "Compulsive eaters",
+      "People with binge eating",
+      "Those with bulimia",
+      "Individuals seeking support"
+    ],
+    notIdealFor: [
+      "Those needing medical treatment",
+      "People wanting diet programs",
+      "Individuals preferring secular approaches"
+    ],
+    website: "https://oa.org"
   }
 ]
 
