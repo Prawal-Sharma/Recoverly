@@ -61,10 +61,10 @@ export default function ResourcesPage() {
   return (
     <div className="container max-w-7xl py-10">
       <div className="mb-10">
-        <h1 className="text-4xl font-bold mb-4">Resources for Your Recovery</h1>
+        <h1 className="text-4xl font-bold mb-4">Interactive Recovery Tools</h1>
         <p className="text-xl text-muted-foreground">
-          Evidence-based tools and resources designed to support you wherever you are in your recovery. 
-          Build your personalized toolkit for lasting change.
+          11 fully-functional interactive tools to support your recovery journey. 
+          Practice CBT, DBT, mindfulness, track progress, and build your personalized recovery toolkit - all tools are working and ready to use.
         </p>
       </div>
 
@@ -102,28 +102,6 @@ export default function ResourcesPage() {
             </Card>
           )
         })}
-      </div>
-
-      {/* Coming Soon Section */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Coming Soon</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {additionalResources.map((resource) => {
-            const Icon = resource.icon
-            return (
-              <Card key={resource.title} className="opacity-75">
-                <CardHeader>
-                  <Icon className="h-6 w-6 text-muted-foreground mb-2" />
-                  <CardTitle className="text-lg">{resource.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{resource.description}</p>
-                  <p className="text-xs text-muted-foreground mt-2">Coming soon...</p>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
       </div>
 
       {/* Helpful Links */}

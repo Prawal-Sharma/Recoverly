@@ -612,7 +612,7 @@ export default function CheckInPage() {
                   Add mindfulness to your daily routine
                 </p>
                 <Button size="sm" variant="outline" asChild className="w-full">
-                  <Link href="/resources/mindfulness/timer">Meditate</Link>
+                  <Link href="/resources/mindfulness/meditation-timer">Meditate</Link>
                 </Button>
               </CardContent>
             </Card>

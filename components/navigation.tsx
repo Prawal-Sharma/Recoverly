@@ -331,11 +331,11 @@ export function Navigation() {
             </Link>
             <Link
               href="/resources"
-              className="block px-4 py-3 text-base font-medium hover:bg-muted rounded-md focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring min-h-[44px] flex items-center"
+              className="block px-4 py-3 text-base font-medium bg-primary/10 hover:bg-primary/20 rounded-md focus:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-primary min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
               role="menuitem"
             >
-              Interactive Tools
+              ⚡ Interactive Tools (11 Tools)
             </Link>
             <Link
               href="/quiz"

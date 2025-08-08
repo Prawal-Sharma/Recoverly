@@ -83,7 +83,7 @@ export default function MindfulnessPage() {
         <h2 className="text-2xl font-bold mb-4">Quick Access</h2>
         <div className="grid gap-4 md:grid-cols-4">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-            <Link href="/resources/mindfulness/timer">
+            <Link href="/resources/mindfulness/meditation-timer">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Timer className="h-5 w-5 text-primary" />
