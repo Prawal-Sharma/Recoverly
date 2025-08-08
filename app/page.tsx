@@ -157,67 +157,158 @@ export default function Home() {
         <div className="container max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Recovery Programs We Cover
+              18 Recovery Programs Available
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              No single path works for everyone. Explore your options.
+              From traditional 12-step to modern alternatives - find the approach that resonates with you
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>12-Step Programs</CardTitle>
-                <CardDescription>Spiritual & Traditional</CardDescription>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Substance Recovery
+                  <span className="text-2xl font-bold text-primary">8</span>
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">AA:</span>
-                    <span className="text-muted-foreground">The original 12-step program for alcohol addiction</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">NA:</span>
-                    <span className="text-muted-foreground">Narcotics Anonymous for drug addiction</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">Celebrate Recovery:</span>
-                    <span className="text-muted-foreground">Christian-based recovery program</span>
-                  </li>
-                </ul>
+                <p className="text-sm text-muted-foreground mb-2">
+                  For alcohol and drug addiction
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">AA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">NA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">SMART</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">LifeRing</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">+4 more</span>
+                </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Alternative Programs</CardTitle>
-                <CardDescription>Secular & Modern Approaches</CardDescription>
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Family & Friends
+                  <span className="text-2xl font-bold text-primary">3</span>
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">SMART Recovery:</span>
-                    <span className="text-muted-foreground">Science-based, self-empowerment approach</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">Recovery Dharma:</span>
-                    <span className="text-muted-foreground">Buddhist-inspired path to recovery</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="font-semibold mr-2">LifeRing:</span>
-                    <span className="text-muted-foreground">Secular, self-directed recovery</span>
-                  </li>
-                </ul>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Support for loved ones
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Al-Anon</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">CoDA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">ACA</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Behavioral
+                  <span className="text-2xl font-bold text-primary">4</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Gambling, eating, and more
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">GA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">OA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">SAA</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">+1 more</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Mindfulness-Based
+                  <span className="text-2xl font-bold text-primary">2</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Buddhist-inspired paths
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Recovery Dharma</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Refuge Recovery</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Moderation
+                  <span className="text-2xl font-bold text-primary">2</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Harm reduction approach
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">HAMS</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">MM</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Specialized
+                  <span className="text-2xl font-bold text-primary">1</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Women-specific recovery
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Women for Sobriety</span>
+                </div>
               </CardContent>
             </Card>
           </div>
 
-          <div className="text-center mt-8">
-            <Button asChild>
+          <div className="bg-primary/5 rounded-lg p-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div>
+                <p className="text-3xl font-bold text-primary">7</p>
+                <p className="text-sm text-muted-foreground">12-Step Programs</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-primary">6</p>
+                <p className="text-sm text-muted-foreground">Secular Options</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-primary">3</p>
+                <p className="text-sm text-muted-foreground">Faith-Based</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-primary">All</p>
+                <p className="text-sm text-muted-foreground">Available Online</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Button asChild size="lg">
               <Link href="/programs">
-                Compare All Programs <ArrowRight className="ml-2 h-4 w-4" />
+                Explore All 18 Programs <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Compare approaches, philosophies, and find your perfect fit
+            </p>
           </div>
         </div>
       </section>
