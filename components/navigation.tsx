@@ -96,19 +96,38 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container flex h-16 items-center justify-between" role="navigation" aria-label="Main navigation">
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center space-x-2">
-            <Heart className="h-6 w-6 text-primary" />
+          <Link href="/" className="flex items-center space-x-2" aria-label="Recoverly Home">
+            <Heart className="h-6 w-6 text-primary" aria-hidden="true" />
             <span className="font-bold text-xl">Recoverly</span>
           </Link>
 
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Programs</NavigationMenuTrigger>
+                <NavigationMenuTrigger 
+                  onClick={(e) => {
+                    if (e.ctrlKey || e.metaKey || e.shiftKey) {
+                      window.open('/programs', '_blank')
+                      e.preventDefault()
+                    }
+                  }}
+                  onDoubleClick={() => window.location.href = '/programs'}
+                >
+                  Programs
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="w-[750px] p-4">
+                    <div className="mb-3 pb-3 border-b">
+                      <Link 
+                        href="/programs" 
+                        className="text-sm font-medium hover:text-primary transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Browse All 18 Recovery Programs →
+                      </Link>
+                    </div>
                     <div className="grid grid-cols-2 gap-4">
                       {programCategories.map((category) => (
                         <div key={category.category} className="space-y-2">
@@ -151,9 +170,28 @@ export function Navigation() {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                <NavigationMenuTrigger
+                  onClick={(e) => {
+                    if (e.ctrlKey || e.metaKey || e.shiftKey) {
+                      window.open('/resources', '_blank')
+                      e.preventDefault()
+                    }
+                  }}
+                  onDoubleClick={() => window.location.href = '/resources'}
+                >
+                  Resources
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="w-[600px] p-4">
+                    <div className="mb-3 pb-3 border-b">
+                      <Link 
+                        href="/resources" 
+                        className="text-sm font-medium hover:text-primary transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Explore All Resources →
+                      </Link>
+                    </div>
                     <div className="grid grid-cols-2 gap-4">
                       {resourceCategories.map((category) => (
                         <div key={category.category} className="space-y-2">
@@ -221,20 +259,23 @@ export function Navigation() {
         </div>
 
         <button
-          className="md:hidden"
+          className="md:hidden p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-6 w-6" aria-hidden="true" />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6" aria-hidden="true" />
           )}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden" id="mobile-menu" role="menu">
           <div className="space-y-1 px-4 pb-3 pt-2">
             <Link
               href="/programs"
