@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Menu, X, Heart } from "lucide-react"
+import { Menu, X, Heart, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
@@ -15,70 +15,80 @@ import {
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
 
-const programs = [
+const programCategories = [
   {
-    title: "AA (Alcoholics Anonymous)",
-    href: "/programs/aa",
-    description: "12-step spiritual program for alcohol addiction",
+    category: "12-Step Programs",
+    programs: [
+      { title: "AA", href: "/programs/aa", description: "Alcoholics Anonymous" },
+      { title: "NA", href: "/programs/na", description: "Narcotics Anonymous" },
+      { title: "Celebrate Recovery", href: "/programs/celebrate", description: "Christian-based recovery" },
+    ]
   },
   {
-    title: "SMART Recovery",
-    href: "/programs/smart",
-    description: "Science-based, secular approach to recovery",
+    category: "Secular Programs",
+    programs: [
+      { title: "SMART Recovery", href: "/programs/smart", description: "Science-based approach" },
+      { title: "LifeRing", href: "/programs/lifering", description: "Self-directed recovery" },
+      { title: "SOS", href: "/programs/sos", description: "Secular Organizations for Sobriety" },
+    ]
   },
   {
-    title: "Recovery Dharma",
-    href: "/programs/dharma",
-    description: "Buddhist-inspired path to recovery",
+    category: "Mindfulness-Based",
+    programs: [
+      { title: "Recovery Dharma", href: "/programs/dharma", description: "Buddhist-inspired path" },
+      { title: "Refuge Recovery", href: "/programs/refuge", description: "Buddhist recovery program" },
+    ]
   },
   {
-    title: "Celebrate Recovery",
-    href: "/programs/celebrate",
-    description: "Christian-based 12-step program",
+    category: "Moderation & Harm Reduction",
+    programs: [
+      { title: "HAMS", href: "/programs/hams", description: "Harm reduction approach" },
+      { title: "Moderation Management", href: "/programs/mm", description: "Controlled drinking" },
+    ]
   },
   {
-    title: "LifeRing",
-    href: "/programs/lifering",
-    description: "Secular, self-directed recovery approach",
+    category: "Family & Friends",
+    programs: [
+      { title: "Al-Anon", href: "/programs/alanon", description: "For families of alcoholics" },
+      { title: "CoDA", href: "/programs/coda", description: "Codependents Anonymous" },
+      { title: "ACA", href: "/programs/aca", description: "Adult Children of Alcoholics" },
+    ]
   },
   {
-    title: "Refuge Recovery",
-    href: "/programs/refuge",
-    description: "Buddhist-based addiction recovery program",
-  },
+    category: "Specialized Programs",
+    programs: [
+      { title: "Women for Sobriety", href: "/programs/wfs", description: "Women-only recovery" },
+      { title: "GA", href: "/programs/ga", description: "Gamblers Anonymous" },
+      { title: "OA", href: "/programs/oa", description: "Overeaters Anonymous" },
+      { title: "SAA", href: "/programs/saa", description: "Sex Addicts Anonymous" },
+    ]
+  }
 ]
 
-const resources = [
+const resourceCategories = [
   {
-    title: "CBT Tools",
-    href: "/resources/cbt",
-    description: "Cognitive Behavioral Therapy exercises",
+    category: "Therapy Tools",
+    resources: [
+      { title: "CBT Exercises", href: "/resources/cbt", description: "Cognitive Behavioral Therapy" },
+      { title: "DBT Skills", href: "/resources/dbt", description: "Dialectical Behavior Therapy" },
+      { title: "Mindfulness", href: "/resources/mindfulness", description: "Meditation & breathing" },
+    ]
   },
   {
-    title: "DBT Skills",
-    href: "/resources/dbt",
-    description: "Dialectical Behavior Therapy modules",
+    category: "Getting Started",
+    resources: [
+      { title: "First Meeting Guide", href: "/resources/first-meeting", description: "What to expect" },
+      { title: "Find Your Path Quiz", href: "/quiz", description: "Personalized recommendations" },
+      { title: "Coping Strategies", href: "/resources/coping", description: "Managing cravings" },
+    ]
   },
   {
-    title: "First Meeting Guide",
-    href: "/resources/first-meeting",
-    description: "What to expect at your first recovery meeting",
-  },
-  {
-    title: "Coping Strategies",
-    href: "/resources/coping",
-    description: "Practical tools for managing cravings and triggers",
-  },
-  {
-    title: "Family Support",
-    href: "/resources/family",
-    description: "Resources for loved ones",
-  },
-  {
-    title: "Crisis Help",
-    href: "/resources/crisis",
-    description: "Immediate help and hotlines",
-  },
+    category: "Support Resources",
+    resources: [
+      { title: "Crisis Help", href: "/resources/crisis", description: "Emergency support" },
+      { title: "Family Support", href: "/resources/family", description: "For loved ones" },
+    ]
+  }
 ]
 
 export function Navigation() {
@@ -98,34 +108,90 @@ export function Navigation() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Programs</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {programs.map((program) => (
-                      <ListItem
-                        key={program.title}
-                        title={program.title}
-                        href={program.href}
-                      >
-                        {program.description}
-                      </ListItem>
-                    ))}
-                  </ul>
+                  <div className="w-[750px] p-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {programCategories.map((category) => (
+                        <div key={category.category} className="space-y-2">
+                          <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                            {category.category}
+                          </h4>
+                          <ul className="space-y-1">
+                            {category.programs.map((program) => (
+                              <li key={program.href}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={program.href}
+                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  >
+                                    <div className="text-sm font-medium leading-none">{program.title}</div>
+                                    <p className="line-clamp-1 text-xs leading-snug text-muted-foreground">
+                                      {program.description}
+                                    </p>
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href="/programs"
+                          className="flex items-center text-sm text-primary hover:underline"
+                        >
+                          View all programs
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </Link>
+                      </NavigationMenuLink>
+                    </div>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {resources.map((resource) => (
-                      <ListItem
-                        key={resource.title}
-                        title={resource.title}
-                        href={resource.href}
-                      >
-                        {resource.description}
-                      </ListItem>
-                    ))}
-                  </ul>
+                  <div className="w-[600px] p-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {resourceCategories.map((category) => (
+                        <div key={category.category} className="space-y-2">
+                          <h4 className="text-sm font-medium text-muted-foreground mb-2">
+                            {category.category}
+                          </h4>
+                          <ul className="space-y-1">
+                            {category.resources.map((resource) => (
+                              <li key={resource.href}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={resource.href}
+                                    className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  >
+                                    <div className="text-sm font-medium leading-none">{resource.title}</div>
+                                    <p className="line-clamp-1 text-xs leading-snug text-muted-foreground">
+                                      {resource.description}
+                                    </p>
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href="/resources"
+                          className="flex items-center text-sm text-primary hover:underline"
+                        >
+                          View all resources
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </Link>
+                      </NavigationMenuLink>
+                    </div>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
@@ -211,29 +277,3 @@ export function Navigation() {
     </header>
   )
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
