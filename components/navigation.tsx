@@ -220,7 +220,7 @@ export function Navigation() {
                   <div className="w-[600px] p-4">
                     <div className="mb-3 pb-3 border-b">
                       <Link 
-                        href="/resources" 
+                        href="/tools" 
                         className="text-sm font-medium hover:text-primary transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
