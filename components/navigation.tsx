@@ -75,6 +75,14 @@ const resourceCategories = [
     ]
   },
   {
+    category: "Recovery Tools",
+    resources: [
+      { title: "Sobriety Tracker", href: "/tracker", description: "Track your recovery journey" },
+      { title: "Daily Check-in", href: "/checkin", description: "Daily reflection & goals" },
+      { title: "Recovery Plan", href: "/recovery-plan", description: "Build your personal plan" },
+    ]
+  },
+  {
     category: "Getting Started",
     resources: [
       { title: "First Meeting Guide", href: "/resources/first-meeting", description: "What to expect" },
