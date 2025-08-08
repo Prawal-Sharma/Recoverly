@@ -120,10 +120,10 @@ export default function DBTPage() {
           </Card>
 
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-            <Link href="/resources/dbt/crisis-plan">
+            <Link href="/resources/dbt/tipp">
               <CardHeader>
-                <CardTitle className="text-lg">Crisis Survival Plan</CardTitle>
-                <CardDescription>Create your personalized crisis toolkit</CardDescription>
+                <CardTitle className="text-lg">TIPP Crisis Skills</CardTitle>
+                <CardDescription>Interactive guide for crisis survival techniques</CardDescription>
               </CardHeader>
               <CardContent>
                 <Badge variant="secondary">Emergency Tool</Badge>

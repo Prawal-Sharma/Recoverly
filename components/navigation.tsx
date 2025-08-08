@@ -72,6 +72,7 @@ const resourceCategories = [
       { title: "CBT Exercises", href: "/resources/cbt", description: "Cognitive Behavioral Therapy" },
       { title: "Distortion Quiz", href: "/resources/cbt/distortion-quiz", description: "Test your thinking patterns" },
       { title: "DBT Skills", href: "/resources/dbt", description: "Dialectical Behavior Therapy" },
+      { title: "TIPP Crisis Skills", href: "/resources/dbt/tipp", description: "Emergency DBT techniques" },
       { title: "Mindfulness", href: "/resources/mindfulness", description: "Meditation & breathing" },
       { title: "Breathing Exercises", href: "/resources/mindfulness/breathing", description: "Guided breathing techniques" },
     ]
