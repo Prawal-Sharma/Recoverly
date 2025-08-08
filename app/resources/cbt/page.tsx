@@ -176,7 +176,13 @@ export default function CBTPage() {
                 <p className="text-sm text-muted-foreground mb-3">
                   Category: {exercise.category}
                 </p>
-                <Link href={`/resources/cbt/exercises/${exercise.id}`}>
+                <Link href={
+                  exercise.category === 'Cognitive Restructuring' ? '/resources/cbt/thought-record' :
+                  exercise.category === 'Behavioral Activation' ? '/resources/cbt/trigger-map' :
+                  exercise.category === 'Decision Making' ? '/resources/cbt/thought-record' :
+                  exercise.category === 'Relapse Prevention' ? '/resources/cbt/trigger-map' :
+                  '/resources/cbt/thought-record'
+                }>
                   <Button variant="outline" size="sm">
                     <Activity className="mr-2 h-4 w-4" />
                     Start Exercise

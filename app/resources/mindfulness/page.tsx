@@ -214,7 +214,7 @@ export default function MindfulnessPage() {
                   <Wind className="h-3 w-3" />
                   <span>{exercise.rounds} rounds</span>
                 </div>
-                <Link href={`/resources/mindfulness/breathing/${exercise.id}`}>
+                <Link href="/resources/mindfulness/breathing">
                   <Button variant="outline" size="sm" className="w-full">
                     Practice
                   </Button>
