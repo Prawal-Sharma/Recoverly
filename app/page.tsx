@@ -420,7 +420,7 @@ export default function Home() {
 
           <div className="text-center">
             <Button asChild size="lg" variant="outline">
-              <Link href="/resources">
+              <Link href="/tools">
                 Explore All Interactive Tools <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
