@@ -57,3 +57,175 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Accessibility improvements */
+@layer utilities {
+  /* Enhanced focus indicators */
+  .focus-visible\:ring-4:focus-visible {
+    --tw-ring-offset-width: 2px;
+    --tw-ring-width: 4px;
+  }
+
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  .sr-only:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .text-muted-foreground {
+      color: hsl(var(--foreground));
+      opacity: 0.8;
+    }
+    
+    .border-muted {
+      border-color: hsl(var(--border));
+      border-width: 2px;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .transition-colors,
+    .transition-all,
+    .transition-transform {
+      transition-duration: 0.01ms !important;
+    }
+    
+    .animate-spin,
+    .animate-pulse {
+      animation: none !important;
+    }
+  }
+
+  /* Ensure minimum touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better focus indicators for custom elements */
+  [role="button"]:focus,
+  [role="checkbox"]:focus,
+  [role="radio"]:focus,
+  [role="menuitem"]:focus {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+
+  /* Status announcements */
+  .sr-announce {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* Mobile-optimized range slider styles */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px;
+    background: hsl(var(--muted));
+    border-radius: 6px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    /* Larger touch targets */
+    input[type="range"]::-webkit-slider-thumb {
+      height: 28px;
+      width: 28px;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      height: 28px;
+      width: 28px;
+    }
+
+    /* Better spacing for mobile cards */
+    .mobile-card-spacing {
+      margin-bottom: 1rem;
+    }
+
+    /* Mobile-friendly button spacing */
+    .mobile-button-group {
+      gap: 0.75rem;
+    }
+
+    /* Improved mobile typography */
+    .mobile-text-optimize {
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    /* Touch-friendly list items */
+    .mobile-list-item {
+      min-height: 48px;
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  /* Dark mode slider adjustments */
+  .dark input[type="range"] {
+    background: hsl(var(--muted));
+  }
+
+  .dark input[type="range"]::-webkit-slider-thumb {
+    background: hsl(var(--primary));
+    border: 2px solid hsl(var(--background));
+  }
+
+  .dark input[type="range"]::-moz-range-thumb {
+    background: hsl(var(--primary));
+    border: 2px solid hsl(var(--background));
+  }
+}

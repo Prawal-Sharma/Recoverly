@@ -18,7 +18,8 @@ export default function CBTPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Cognitive Behavioral Therapy (CBT)</h1>
         <p className="text-xl text-muted-foreground">
-          Evidence-based techniques to change negative thought patterns and behaviors that contribute to addiction.
+          Learn practical techniques to challenge unhelpful thoughts and build healthier patterns. 
+          These evidence-based tools help you develop skills for lasting recovery.
         </p>
       </div>
 

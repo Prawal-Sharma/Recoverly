@@ -36,7 +36,8 @@ export default function MindfulnessPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Mindfulness & Meditation</h1>
         <p className="text-xl text-muted-foreground">
-          Cultivate inner peace, manage cravings, and build resilience through mindfulness practices designed for recovery.
+          Discover calming practices to manage cravings, reduce stress, and build resilience in your recovery. 
+          These tools help you stay present and grounded in difficult moments.
         </p>
       </div>
 

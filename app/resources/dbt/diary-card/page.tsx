@@ -573,6 +573,62 @@ export default function DiaryCardPage() {
         </div>
       )}
 
+      {/* Related DBT Tools */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle>Related DBT Tools</CardTitle>
+          <CardDescription>Tools that work well with diary card tracking</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">TIPP Crisis Skills</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Use when urges are intense or overwhelming
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/dbt/tipp">Practice TIPP</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Brain className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Thought Record</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Challenge negative thoughts affecting emotions
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/cbt/thought-record">Record Thoughts</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Heart className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Daily Check-in</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Complement with daily wellness tracking
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/checkin">Daily Check-in</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Tips */}
       <Card className="mt-8">
         <CardHeader>

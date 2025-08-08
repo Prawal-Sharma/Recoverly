@@ -563,6 +563,77 @@ export default function CheckInPage() {
           </CardContent>
         </Card>
       )}
+
+      {/* Related Tools */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle>Related Daily Tools</CardTitle>
+          <CardDescription>Tools that complement your daily wellness routine</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Trophy className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Sobriety Tracker</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Track your recovery journey and milestones
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/tracker">Track Progress</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Calendar className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">DBT Diary Card</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Deep dive into emotions and DBT skills
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/dbt/diary-card">Track DBT Skills</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Timer className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Meditation Timer</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Add mindfulness to your daily routine
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/mindfulness/timer">Meditate</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Heart className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Recovery Plan</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Build your comprehensive recovery plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/recovery-plan">Build Plan</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

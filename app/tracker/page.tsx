@@ -541,6 +541,60 @@ export default function TrackerPage() {
         </Card>
       )}
 
+      {/* Crisis Support */}
+      <Card className="mb-8 border-amber-200 bg-amber-50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-amber-700">
+            <AlertCircle className="h-5 w-5" />
+            Having Cravings or Difficult Thoughts?
+          </CardTitle>
+          <CardDescription className="text-amber-600">
+            Use these tools to help you through challenging moments
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-3">
+              <h3 className="font-semibold text-amber-800">Immediate Support</h3>
+              <div className="space-y-2">
+                <Button size="sm" variant="outline" asChild className="w-full justify-start">
+                  <Link href="/resources/dbt/tipp">
+                    <Zap className="mr-2 h-4 w-4" />
+                    TIPP Crisis Skills
+                  </Link>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="w-full justify-start">
+                  <Link href="/resources/cbt/trigger-map">
+                    <Target className="mr-2 h-4 w-4" />
+                    Map Your Triggers
+                  </Link>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="w-full justify-start">
+                  <Link href="/resources/crisis">
+                    <Heart className="mr-2 h-4 w-4" />
+                    Crisis Resources
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="font-semibold text-amber-800">Emergency Contacts</h3>
+              <div className="space-y-2 text-sm">
+                <div className="p-2 bg-amber-100 rounded">
+                  <p className="font-medium">Crisis & Suicide Prevention</p>
+                  <p className="text-amber-700">Call or text <strong>988</strong></p>
+                </div>
+                <div className="p-2 bg-amber-100 rounded">
+                  <p className="font-medium">Crisis Text Line</p>
+                  <p className="text-amber-700">Text <strong>HOME</strong> to <strong>741741</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Actions */}
       <div className="flex gap-4">
         <Button variant="outline" onClick={handleExport}>

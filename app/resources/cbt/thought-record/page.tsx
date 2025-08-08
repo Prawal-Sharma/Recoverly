@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Brain, Save, Download, Trash2, ChevronLeft, Calendar, TrendingDown, TrendingUp } from 'lucide-react'
+import { Brain, Save, Download, Trash2, ChevronLeft, Calendar, TrendingDown, TrendingUp, Target, MapPin, Zap, Heart } from 'lucide-react'
 import Link from 'next/link'
 import { cognitiveDistortions } from '@/lib/cbt-data'
 
@@ -53,9 +53,66 @@ export default function ThoughtRecordPage() {
     }
   }, [records])
 
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
+
+  const validateField = (field: string, value: any) => {
+    const newErrors = { ...errors }
+    
+    switch (field) {
+      case 'situation':
+        if (!value?.trim()) {
+          newErrors.situation = 'Please describe the situation'
+        } else {
+          delete newErrors.situation
+        }
+        break
+      case 'automaticThought':
+        if (!value?.trim()) {
+          newErrors.automaticThought = 'Please enter your automatic thought'
+        } else {
+          delete newErrors.automaticThought
+        }
+        break
+      case 'emotion':
+        if (!value?.trim()) {
+          newErrors.emotion = 'Please identify your emotion'
+        } else {
+          delete newErrors.emotion
+        }
+        break
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const announceToScreenReader = (message: string, priority: 'polite' | 'assertive' = 'polite') => {
+    const liveRegion = document.getElementById('live-region')
+    if (liveRegion) {
+      liveRegion.setAttribute('aria-live', priority)
+      liveRegion.textContent = message
+      setTimeout(() => {
+        liveRegion.textContent = ''
+      }, 2000)
+    }
+  }
+
   const handleSave = () => {
-    if (!currentRecord.situation || !currentRecord.automaticThought || !currentRecord.emotion) {
-      alert('Please fill in at least the situation, thought, and emotion fields.')
+    const isValid = 
+      validateField('situation', currentRecord.situation) &&
+      validateField('automaticThought', currentRecord.automaticThought) &&
+      validateField('emotion', currentRecord.emotion)
+
+    if (!isValid) {
+      // Focus first error field
+      const firstErrorField = Object.keys(errors)[0]
+      document.getElementById(firstErrorField)?.focus()
+      
+      // Announce errors to screen readers
+      const errorCount = Object.keys(errors).length
+      const announcement = `There ${errorCount === 1 ? 'is' : 'are'} ${errorCount} error${errorCount === 1 ? '' : 's'} in the form. Please review and correct.`
+      announceToScreenReader(announcement, 'assertive')
       return
     }
 
@@ -85,7 +142,8 @@ export default function ThoughtRecordPage() {
       distortions: []
     })
     
-    alert('Thought record saved successfully!')
+    // Success announcement for screen readers
+    announceToScreenReader('Thought record saved successfully!', 'polite')
   }
 
   const handleDelete = (id: string) => {
@@ -128,7 +186,8 @@ export default function ThoughtRecordPage() {
           Thought Record
         </h1>
         <p className="text-xl text-muted-foreground">
-          Challenge negative thoughts by examining the evidence and creating balanced perspectives.
+          Transform negative thinking patterns by examining evidence and building balanced perspectives. 
+          This powerful CBT tool helps you respond to situations with clarity instead of reacting from emotion.
         </p>
       </div>
 
@@ -184,14 +243,37 @@ export default function ThoughtRecordPage() {
                 </div>
               </div>
               <div>
-                <Label htmlFor="situation">Situation</Label>
+                <Label htmlFor="situation">Situation *</Label>
                 <Textarea
                   id="situation"
+                  name="situation"
                   placeholder="Describe what happened..."
                   value={currentRecord.situation || ''}
-                  onChange={(e) => setCurrentRecord({...currentRecord, situation: e.target.value})}
+                  onChange={(e) => {
+                    setCurrentRecord({...currentRecord, situation: e.target.value})
+                    if (touched.situation) {
+                      validateField('situation', e.target.value)
+                    }
+                  }}
+                  onBlur={() => {
+                    setTouched({...touched, situation: true})
+                    validateField('situation', currentRecord.situation)
+                  }}
                   rows={3}
+                  aria-describedby={`situation-help ${errors.situation ? 'situation-error' : ''}`}
+                  aria-required="true"
+                  aria-invalid={!!errors.situation}
+                  className={errors.situation ? 'border-destructive focus:border-destructive' : ''}
                 />
+                <div id="situation-help" className="text-sm text-muted-foreground mt-1">
+                  Be specific about the circumstances. This field is required.
+                </div>
+                {errors.situation && (
+                  <div id="situation-error" className="text-sm text-destructive mt-1" role="alert">
+                    <AlertCircle className="inline w-4 h-4 mr-1" aria-hidden="true" />
+                    {errors.situation}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -444,6 +526,77 @@ export default function ThoughtRecordPage() {
             <li>• Your balanced thought should acknowledge both the evidence for and against</li>
             <li>• Practice regularly - the more you use this tool, the more automatic it becomes</li>
           </ul>
+        </CardContent>
+      </Card>
+
+      {/* Related CBT Tools */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle>Related CBT Tools</CardTitle>
+          <CardDescription>Continue building your cognitive skills with these tools</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Target className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Distortion Quiz</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Test your ability to identify cognitive distortions
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/cbt/distortion-quiz">Take Quiz</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Trigger Mapper</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Map your triggers and develop coping strategies
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/cbt/trigger-map">Map Triggers</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">TIPP Crisis Skills</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Emergency techniques for intense emotions
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/dbt/tipp">Learn TIPP</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Heart className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Recovery Plan</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Include thought challenging in your recovery plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/recovery-plan">Build Plan</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </CardContent>
       </Card>
     </div>

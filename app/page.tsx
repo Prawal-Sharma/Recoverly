@@ -7,24 +7,24 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/10 to-background py-20 px-4 md:py-32">
+      <section className="relative bg-gradient-to-b from-primary/10 to-background py-16 px-4 sm:py-20 md:py-32">
         <div className="container max-w-6xl">
-          <div className="text-center space-y-8">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              Your Recovery Journey <br />
-              <span className="text-primary">Starts Here</span>
+          <div className="text-center space-y-6 sm:space-y-8">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Your Recovery Journey <br className="hidden sm:block" />
+              <span className="block sm:inline text-primary">Starts Here</span>
             </h1>
-            <p className="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-[600px] text-base text-muted-foreground sm:text-lg md:text-xl px-4 sm:px-0">
               Discover recovery programs that align with your beliefs and values. 
               Find meetings, resources, and support—all in one place.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
+            <div className="flex flex-col gap-3 justify-center px-4 sm:px-0 sm:flex-row sm:gap-4">
+              <Button size="lg" asChild className="w-full sm:w-auto min-h-[44px] text-base">
                 <Link href="/quiz">
-                  Find Your Path <ArrowRight className="ml-2 h-4 w-4" />
+                  Find Your Path <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" asChild className="w-full sm:w-auto min-h-[44px] text-base">
                 <Link href="/meetings">
                   Find Meetings Near You
                 </Link>
@@ -157,7 +157,7 @@ export default function Home() {
         <div className="container max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              18 Recovery Programs Available
+              17 Recovery Programs Available
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               From traditional 12-step to modern alternatives - find the approach that resonates with you
@@ -303,7 +303,7 @@ export default function Home() {
           <div className="text-center">
             <Button asChild size="lg">
               <Link href="/programs">
-                Explore All 18 Programs <ArrowRight className="ml-2 h-4 w-4" />
+                Explore All 17 Programs <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <p className="mt-4 text-sm text-muted-foreground">

@@ -61,9 +61,10 @@ export default function ResourcesPage() {
   return (
     <div className="container max-w-7xl py-10">
       <div className="mb-10">
-        <h1 className="text-4xl font-bold mb-4">Recovery Resources</h1>
+        <h1 className="text-4xl font-bold mb-4">Resources for Your Recovery</h1>
         <p className="text-xl text-muted-foreground">
-          Practical guides, tools, and information to support your recovery journey.
+          Evidence-based tools and resources designed to support you wherever you are in your recovery. 
+          Build your personalized toolkit for lasting change.
         </p>
       </div>
 

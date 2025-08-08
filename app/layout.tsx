@@ -62,10 +62,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Accessibility meta tags */}
+        <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#4f46e5" />
+      </head>
       <body className={inter.className}>
+        {/* Live region for announcements */}
+        <div 
+          id="live-region" 
+          aria-live="polite" 
+          aria-atomic="true" 
+          className="sr-only"
+        />
+        
         <div className="flex min-h-screen flex-col">
           <Navigation />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

@@ -32,7 +32,8 @@ export default function DBTPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Dialectical Behavior Therapy (DBT)</h1>
         <p className="text-xl text-muted-foreground">
-          Build a life worth living with skills for managing emotions, tolerating distress, and improving relationships.
+          Develop powerful skills for emotional balance, distress tolerance, and healthier relationships. 
+          DBT techniques help you build resilience and create a life worth living in recovery.
         </p>
       </div>
 

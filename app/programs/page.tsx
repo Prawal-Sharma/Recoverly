@@ -8,7 +8,7 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: 'Recovery Programs | Find Your Path',
-  description: 'Explore 18 different recovery programs including AA, NA, SMART Recovery, Al-Anon, and more. Find the right approach for your recovery journey.',
+  description: 'Explore 17 different recovery programs including AA, NA, SMART Recovery, Al-Anon, and more. Find the right approach for your recovery journey.',
 }
 
 const approachIcons = {
@@ -58,14 +58,14 @@ export default function ProgramsPage() {
       {/* Header Section */}
       <div className="mb-10">
         <div className="flex items-center gap-2 mb-4">
-          <h1 className="text-4xl font-bold tracking-tight">Recovery Programs</h1>
+          <h1 className="text-4xl font-bold tracking-tight">Recovery Programs for Your Journey</h1>
           <Badge variant="secondary" className="text-lg px-3 py-1">
             {programs.length} Programs
           </Badge>
         </div>
         <p className="text-xl text-muted-foreground max-w-3xl">
-          Explore different recovery approaches to find the one that resonates with your beliefs and needs. 
-          Every path to recovery is valid - what matters is finding the one that works for you.
+          Discover recovery approaches that align with your values and support your unique journey. 
+          Every path to recovery is valid—what matters is finding what works for you.
         </p>
       </div>
 

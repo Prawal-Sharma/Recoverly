@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { 
   Thermometer, Activity, Wind, Zap, 
   ChevronLeft, Play, Pause, RotateCcw, 
-  Timer, AlertCircle, CheckCircle2, Home
+  Timer, AlertCircle, CheckCircle2, Home, Phone
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -560,28 +560,43 @@ export default function TippPage() {
 
                   {/* Intensity Tracking */}
                   {isActive && (
-                    <div className="space-y-4 p-4 bg-background rounded-lg border">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">
-                          Emotional Intensity Before (1-10):
+                    <div className="space-y-6 p-4 bg-background rounded-lg border">
+                      <div className="space-y-3">
+                        <label className="block text-sm font-medium mb-3 text-center sm:text-left">
+                          Rate your emotional intensity right now:
                         </label>
-                        <input
-                          type="range"
-                          min="1"
-                          max="10"
-                          value={intensityBefore}
-                          onChange={(e) => setIntensityBefore(parseInt(e.target.value))}
-                          className="w-full"
-                        />
-                        <div className="flex justify-between text-xs text-muted-foreground">
-                          <span>1 - Calm</span>
-                          <span className="font-semibold">{intensityBefore}</span>
-                          <span>10 - Extreme</span>
+                        <div className="space-y-4">
+                          <input
+                            type="range"
+                            min="1"
+                            max="10"
+                            value={intensityBefore}
+                            onChange={(e) => setIntensityBefore(parseInt(e.target.value))}
+                            className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+                            style={{
+                              WebkitAppearance: 'none',
+                              height: '12px',
+                              background: '#e5e7eb',
+                              borderRadius: '6px',
+                              outline: 'none'
+                            }}
+                          />
+                          <div className="flex justify-between text-xs text-muted-foreground px-1">
+                            <span>1<br />Calm</span>
+                            <span className="font-bold text-lg text-primary text-center">
+                              {intensityBefore}
+                              <br />
+                              <span className="text-xs font-normal">
+                                {intensityBefore <= 3 ? 'Low' : intensityBefore <= 7 ? 'Moderate' : 'High'}
+                              </span>
+                            </span>
+                            <span>10<br />Extreme</span>
+                          </div>
                         </div>
                       </div>
 
-                      <Button onClick={completeSession} className="w-full">
-                        <CheckCircle2 className="mr-2 h-4 w-4" />
+                      <Button onClick={completeSession} className="w-full min-h-[44px] text-base">
+                        <CheckCircle2 className="mr-2 h-4 w-4" aria-hidden="true" />
                         Complete Session
                       </Button>
                     </div>
@@ -729,6 +744,60 @@ export default function TippPage() {
               <strong>Remember:</strong> TIPP skills work best when you practice them regularly, 
               not just during crisis moments. The more you practice, the more effective they become.
             </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Crisis Resources */}
+      <Card className="mt-8 border-red-200 bg-red-50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-red-700">
+            <Phone className="h-5 w-5" />
+            Need Additional Crisis Support?
+          </CardTitle>
+          <CardDescription className="text-red-600">
+            If TIPP techniques aren't enough, reach out for immediate support
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="space-y-3">
+              <h3 className="font-semibold text-red-800">Emergency Contacts</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-red-600" />
+                  <div>
+                    <p className="font-medium">Crisis & Suicide Prevention</p>
+                    <p className="text-red-700">Call or text <strong>988</strong></p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-red-600" />
+                  <div>
+                    <p className="font-medium">Crisis Text Line</p>
+                    <p className="text-red-700">Text <strong>HOME</strong> to <strong>741741</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="font-semibold text-red-800">Additional Resources</h3>
+              <div className="space-y-2">
+                <Button size="sm" variant="outline" asChild className="w-full justify-start">
+                  <Link href="/resources/crisis">
+                    <AlertCircle className="mr-2 h-4 w-4" />
+                    Complete Crisis Resources
+                  </Link>
+                </Button>
+                <Button size="sm" variant="outline" asChild className="w-full justify-start">
+                  <Link href="/recovery-plan">
+                    <Home className="mr-2 h-4 w-4" />
+                    Create Emergency Plan
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>

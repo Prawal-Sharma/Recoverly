@@ -458,6 +458,64 @@ export default function MeditationTimerPage() {
         </Card>
       )}
 
+      {/* Related Mindfulness Tools */}
+      {!isRunning && (
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Related Mindfulness Tools</CardTitle>
+            <CardDescription>Expand your mindfulness practice with these tools</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Heart className="h-5 w-5 text-primary" />
+                    <h4 className="font-semibold">Body Scan</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Guided body awareness practice
+                  </p>
+                  <Button size="sm" variant="outline" asChild className="w-full">
+                    <Link href="/resources/mindfulness/body-scan">Start Body Scan</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Wind className="h-5 w-5 text-primary" />
+                    <h4 className="font-semibold">Breathing Exercise</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Focused breathing techniques
+                  </p>
+                  <Button size="sm" variant="outline" asChild className="w-full">
+                    <Link href="/resources/mindfulness/breathing">Practice Breathing</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Calendar className="h-5 w-5 text-primary" />
+                    <h4 className="font-semibold">Daily Check-in</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Include mindfulness in daily wellness
+                  </p>
+                  <Button size="sm" variant="outline" asChild className="w-full">
+                    <Link href="/checkin">Daily Check-in</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Tips */}
       {!isRunning && (
         <Card className="mt-8">

@@ -259,10 +259,10 @@ export default function RecoveryPlanPage() {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 flex items-center gap-2">
           <FileText className="h-8 w-8 text-primary" />
-          Personal Recovery Plan Builder
+          Recovery Plan Builder
         </h1>
         <p className="text-xl text-muted-foreground">
-          Create and maintain your comprehensive recovery plan
+          Build your personalized roadmap for lasting recovery. Create a plan that works with your unique needs and goals.
         </p>
       </div>
 
@@ -841,6 +841,107 @@ export default function RecoveryPlanPage() {
             <li>• Be specific and realistic - vague plans are less effective</li>
             <li>• Include phone numbers and addresses for quick access during crisis</li>
           </ul>
+        </CardContent>
+      </Card>
+
+      {/* Related Tools */}
+      <Card className="mt-8">
+        <CardHeader>
+          <CardTitle>Related Tools to Support Your Plan</CardTitle>
+          <CardDescription>These tools can help you implement and maintain your recovery plan</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Target className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Sobriety Tracker</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Track your progress and celebrate milestones from your plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/tracker">Start Tracking</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Calendar className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Daily Check-in</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Daily reflection on your plan's goals and self-care activities
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/checkin">Daily Check-in</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <AlertCircle className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Trigger Mapper</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Identify triggers and strategies to add to your plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/cbt/trigger-map">Map Triggers</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">TIPP Crisis Skills</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Emergency techniques to add to your crisis action plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/dbt/tipp">Learn TIPP</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Heart className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Mindfulness Timer</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Practice meditation as part of your daily routine
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/mindfulness/meditation-timer">Start Meditating</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <Phone className="h-5 w-5 text-primary" />
+                  <h4 className="font-semibold">Crisis Resources</h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Emergency contacts and support for your crisis plan
+                </p>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link href="/resources/crisis">Crisis Support</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </CardContent>
       </Card>
     </div>

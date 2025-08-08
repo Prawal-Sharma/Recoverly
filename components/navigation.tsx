@@ -121,7 +121,16 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <>
+      {/* Skip to content link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded focus:ring-2 focus:ring-ring"
+      >
+        Skip to main content
+      </a>
+      
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container flex h-16 items-center justify-between" role="navigation" aria-label="Main navigation">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center space-x-2" aria-label="Recoverly Home">
@@ -151,7 +160,7 @@ export function Navigation() {
                         className="text-sm font-medium hover:text-primary transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        Browse All 18 Recovery Programs →
+                        Browse All 17 Recovery Programs →
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
@@ -285,11 +294,12 @@ export function Navigation() {
         </div>
 
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"
+          aria-haspopup="true"
         >
           {mobileMenuOpen ? (
             <X className="h-6 w-6" aria-hidden="true" />
@@ -301,43 +311,52 @@ export function Navigation() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden" id="mobile-menu" role="menu">
-          <div className="space-y-1 px-4 pb-3 pt-2">
+        <div className="md:hidden" id="mobile-menu" role="menu" aria-label="Mobile navigation menu">
+          <div className="space-y-2 px-4 pb-4 pt-3">
             <Link
               href="/programs"
-              className="block px-3 py-2 text-base font-medium"
+              className="block px-4 py-3 text-base font-medium hover:bg-muted rounded-md focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
+              role="menuitem"
             >
               Programs
             </Link>
             <Link
               href="/meetings"
-              className="block px-3 py-2 text-base font-medium"
+              className="block px-4 py-3 text-base font-medium hover:bg-muted rounded-md focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
+              role="menuitem"
             >
               Find Meetings
             </Link>
             <Link
               href="/resources"
-              className="block px-3 py-2 text-base font-medium"
+              className="block px-4 py-3 text-base font-medium hover:bg-muted rounded-md focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
+              role="menuitem"
             >
               Interactive Tools
             </Link>
             <Link
               href="/quiz"
-              className="block px-3 py-2 text-base font-medium"
+              className="block px-4 py-3 text-base font-medium hover:bg-muted rounded-md focus:bg-muted focus:outline-none focus:ring-2 focus:ring-ring min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
+              role="menuitem"
             >
               Find Your Path
             </Link>
-            <Link
-              href="/resources/crisis"
-              className="block px-3 py-2 text-base font-medium text-destructive"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Crisis Help
-            </Link>
+            
+            {/* Crisis Help - Highlighted for mobile accessibility */}
+            <div className="border-t border-muted mt-3 pt-3">
+              <Link
+                href="/resources/crisis"
+                className="block px-4 py-3 text-base font-medium text-destructive bg-destructive/10 hover:bg-destructive/20 rounded-md focus:bg-destructive/20 focus:outline-none focus:ring-2 focus:ring-destructive min-h-[44px] flex items-center"
+                onClick={() => setMobileMenuOpen(false)}
+                role="menuitem"
+              >
+                🚨 Crisis Help
+              </Link>
+            </div>
           </div>
         </div>
       )}

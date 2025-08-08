@@ -280,7 +280,7 @@ export default function QuizPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Find Your Recovery Path</h1>
         <p className="text-muted-foreground">
-          Answer a few questions to get personalized program recommendations
+          Answer a few questions to discover programs and tools that align with your values and recovery goals.
         </p>
         <Progress value={progress} className="mt-4" />
       </div>
@@ -306,12 +306,13 @@ export default function QuizPage() {
             {currentQuestion.options.map((option) => (
               <div
                 key={option.value}
-                className="flex items-center space-x-3 p-3 rounded-lg border hover:bg-muted/50 transition-colors"
+                className="flex items-start space-x-3 p-4 rounded-lg border hover:bg-muted/50 transition-colors min-h-[56px] cursor-pointer"
+                onClick={() => handleAnswer(option.value)}
               >
-                <RadioGroupItem value={option.value} id={option.value} />
+                <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
                 <Label
                   htmlFor={option.value}
-                  className="flex-1 cursor-pointer font-normal"
+                  className="flex-1 cursor-pointer font-normal text-sm sm:text-base leading-relaxed"
                 >
                   {option.label}
                 </Label>
@@ -319,21 +320,23 @@ export default function QuizPage() {
             ))}
           </RadioGroup>
 
-          <div className="flex justify-between mt-6">
+          <div className="flex flex-col-reverse gap-3 mt-6 sm:flex-row sm:justify-between">
             <Button
               variant="outline"
               onClick={handleBack}
               disabled={currentStep === 0}
+              className="w-full sm:w-auto min-h-[44px]"
             >
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
               Back
             </Button>
             <Button
               onClick={handleNext}
               disabled={!answers[currentQuestion.id]}
+              className="w-full sm:w-auto min-h-[44px]"
             >
               {isLastQuestion ? "Get Results" : "Next"}
-              {!isLastQuestion && <ArrowRight className="ml-2 h-4 w-4" />}
+              {!isLastQuestion && <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />}
             </Button>
           </div>
         </CardContent>
