@@ -67,14 +67,28 @@ const programCategories = [
 
 const resourceCategories = [
   {
-    category: "Therapy Tools",
+    category: "CBT Tools",
     resources: [
-      { title: "CBT Exercises", href: "/resources/cbt", description: "Cognitive Behavioral Therapy" },
+      { title: "CBT Overview", href: "/resources/cbt", description: "Cognitive Behavioral Therapy" },
+      { title: "Thought Record", href: "/resources/cbt/thought-record", description: "Track and challenge negative thoughts" },
       { title: "Distortion Quiz", href: "/resources/cbt/distortion-quiz", description: "Test your thinking patterns" },
-      { title: "DBT Skills", href: "/resources/dbt", description: "Dialectical Behavior Therapy" },
-      { title: "TIPP Crisis Skills", href: "/resources/dbt/tipp", description: "Emergency DBT techniques" },
-      { title: "Mindfulness", href: "/resources/mindfulness", description: "Meditation & breathing" },
-      { title: "Breathing Exercises", href: "/resources/mindfulness/breathing", description: "Guided breathing techniques" },
+      { title: "Trigger Mapper", href: "/resources/cbt/trigger-map", description: "Map triggers and coping strategies" },
+    ]
+  },
+  {
+    category: "DBT Tools", 
+    resources: [
+      { title: "DBT Overview", href: "/resources/dbt", description: "Dialectical Behavior Therapy" },
+      { title: "Daily Diary Card", href: "/resources/dbt/diary-card", description: "Track emotions and skills used" },
+      { title: "TIPP Crisis Skills", href: "/resources/dbt/tipp", description: "Emergency techniques for intense emotions" },
+    ]
+  },
+  {
+    category: "Mindfulness Tools",
+    resources: [
+      { title: "Mindfulness Overview", href: "/resources/mindfulness", description: "Meditation & breathing practices" },
+      { title: "Meditation Timer", href: "/resources/mindfulness/meditation-timer", description: "Guided meditation sessions" },
+      { title: "Breathing Exercises", href: "/resources/mindfulness/breathing", description: "Interactive breathing techniques" },
       { title: "Body Scan Guide", href: "/resources/mindfulness/body-scan", description: "Guided body awareness meditation" },
     ]
   },
@@ -191,7 +205,7 @@ export function Navigation() {
                   }}
                   onDoubleClick={() => window.location.href = '/resources'}
                 >
-                  Resources
+                  Interactive Tools
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="w-[600px] p-4">
@@ -201,7 +215,7 @@ export function Navigation() {
                         className="text-sm font-medium hover:text-primary transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        Explore All Resources →
+                        Explore All 11 Interactive Tools →
                       </Link>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
@@ -308,7 +322,7 @@ export function Navigation() {
               className="block px-3 py-2 text-base font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Resources
+              Interactive Tools
             </Link>
             <Link
               href="/quiz"

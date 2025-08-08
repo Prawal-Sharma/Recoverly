@@ -13,12 +13,15 @@ export interface QuizQuestion {
       flexible?: number
       community?: number
       solo?: number
+      family?: number
+      moderation?: number
     }
   }[]
 }
 
 export interface QuizResult {
   recommendedPrograms: string[]
+  recommendedTools?: string[]
   scores: {
     spiritual: number
     secular: number
@@ -27,6 +30,8 @@ export interface QuizResult {
     flexible: number
     community: number
     solo: number
+    family: number
+    moderation: number
   }
   timestamp: string
 }
@@ -247,6 +252,60 @@ export const quizQuestions: QuizQuestion[] = [
         weight: {}
       }
     ]
+  },
+  {
+    id: "family-impact",
+    question: "How has your addiction affected your family and loved ones?",
+    description: "Understanding family impact can help guide support options",
+    options: [
+      {
+        value: "severely-affected",
+        label: "My family has been severely affected and needs support",
+        weight: { family: 4, community: 2 }
+      },
+      {
+        value: "moderately-affected", 
+        label: "There has been some impact on family relationships",
+        weight: { family: 2, community: 1 }
+      },
+      {
+        value: "minimal-impact",
+        label: "Family impact has been minimal",
+        weight: { solo: 2 }
+      },
+      {
+        value: "family-supportive",
+        label: "My family is very supportive of my recovery",
+        weight: { family: 1, community: 2 }
+      }
+    ]
+  },
+  {
+    id: "recovery-approach",
+    question: "What's your ideal approach to substance use going forward?",
+    description: "Different programs have different approaches to abstinence vs. moderation",
+    options: [
+      {
+        value: "complete-abstinence",
+        label: "Complete abstinence - never using again",
+        weight: { structured: 3, spiritual: 1 }
+      },
+      {
+        value: "controlled-use",
+        label: "Controlled/moderate use with harm reduction",
+        weight: { moderation: 4, secular: 2, flexible: 2 }
+      },
+      {
+        value: "unsure-approach",
+        label: "I'm unsure - want to explore different approaches",
+        weight: { flexible: 2, secular: 1 }
+      },
+      {
+        value: "abstinence-preferred",
+        label: "Abstinence preferred but open to harm reduction",
+        weight: { moderation: 2, flexible: 2 }
+      }
+    ]
   }
 ]
 
@@ -258,7 +317,9 @@ export function calculateResults(answers: Record<string, string>): QuizResult {
     structured: 0,
     flexible: 0,
     community: 0,
-    solo: 0
+    solo: 0,
+    family: 0,
+    moderation: 0
   }
 
   // Calculate scores based on answers
@@ -275,39 +336,85 @@ export function calculateResults(answers: Record<string, string>): QuizResult {
 
   // Determine recommended programs based on scores
   const recommendedPrograms: string[] = []
+  const toolRecommendations: string[] = []
   
-  // Primary recommendations based on highest scores
+  // Primary program recommendations based on approach
   if (scores.secular > scores.spiritual && scores.secular > scores.religious) {
-    recommendedPrograms.push("smart", "lifering")
+    // Secular approaches
+    if (scores.flexible > scores.structured) {
+      recommendedPrograms.push("lifering", "smart")
+      if (scores.moderation > 3) recommendedPrograms.push("mm", "hams")
+    } else {
+      recommendedPrograms.push("smart", "sos")
+    }
   } else if (scores.religious > scores.spiritual && scores.religious > scores.secular) {
+    // Religious approaches
     recommendedPrograms.push("celebrate", "aa")
-  } else if (scores.spiritual > scores.secular) {
+  } else {
+    // Spiritual approaches
     if (scores.flexible > scores.structured) {
       recommendedPrograms.push("dharma", "refuge")
     } else {
-      recommendedPrograms.push("aa", "dharma")
+      recommendedPrograms.push("aa", "na")
     }
   }
 
-  // Add AA if structured and community are high
-  if (scores.structured > 5 && scores.community > 5 && !recommendedPrograms.includes("aa")) {
-    recommendedPrograms.push("aa")
+  // Add specialized programs based on specific needs
+  
+  // Family and support programs
+  if (scores.family > 4) {
+    recommendedPrograms.push("alanon", "coda", "aca")
+  }
+  
+  // Moderation programs
+  if (scores.moderation > 5 && scores.secular > 3) {
+    if (!recommendedPrograms.includes("mm")) recommendedPrograms.push("mm")
+    if (!recommendedPrograms.includes("hams")) recommendedPrograms.push("hams")
+  }
+  
+  // Gender-specific programs
+  if (scores.community > 5 && scores.structured > 3) {
+    recommendedPrograms.push("wfs") // Women for Sobriety
+  }
+  
+  // Behavioral addiction programs
+  if (scores.secular > 4) {
+    recommendedPrograms.push("ga", "oa", "saa") // Based on different behavioral patterns
+  }
+  
+  // Community-focused programs  
+  if (scores.community > 6 && scores.structured > 4) {
+    if (!recommendedPrograms.includes("aa")) recommendedPrograms.push("aa")
+    if (!recommendedPrograms.includes("na")) recommendedPrograms.push("na")
   }
 
-  // Add SMART if secular and flexible are high
-  if (scores.secular > 5 && scores.flexible > 3 && !recommendedPrograms.includes("smart")) {
-    recommendedPrograms.push("smart")
-  }
-
-  // Ensure at least 2 recommendations
-  if (recommendedPrograms.length < 2) {
+  // Ensure we have diverse recommendations
+  if (recommendedPrograms.length < 3) {
     if (!recommendedPrograms.includes("aa")) recommendedPrograms.push("aa")
     if (!recommendedPrograms.includes("smart")) recommendedPrograms.push("smart")
+    if (!recommendedPrograms.includes("dharma")) recommendedPrograms.push("dharma")
   }
 
-  // Limit to top 3
+  // Tool recommendations based on scores and needs
+  if (scores.secular > 4 || scores.flexible > 4) {
+    toolRecommendations.push("/resources/cbt/thought-record", "/resources/cbt/distortion-quiz")
+  }
+  
+  if (scores.community < 4 || scores.structured < 3) {
+    toolRecommendations.push("/recovery-plan", "/tracker")
+  }
+  
+  if (scores.spiritual > 3 || Object.keys(answers).some(key => key.includes('stress'))) {
+    toolRecommendations.push("/resources/mindfulness/meditation-timer", "/resources/mindfulness/body-scan")
+  }
+  
+  // Always recommend crisis tools for early recovery
+  toolRecommendations.push("/resources/dbt/tipp", "/resources/crisis")
+
+  // Limit to top 4 programs and 4 tools
   return {
-    recommendedPrograms: recommendedPrograms.slice(0, 3),
+    recommendedPrograms: recommendedPrograms.slice(0, 4),
+    recommendedTools: toolRecommendations.slice(0, 4),
     scores,
     timestamp: new Date().toISOString()
   }

@@ -8,10 +8,63 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Progress } from "@/components/ui/progress"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, ArrowRight, RefreshCw, CheckCircle } from "lucide-react"
+import { ArrowLeft, ArrowRight, RefreshCw, CheckCircle, Brain, Heart, Target, Zap } from "lucide-react"
 import { quizQuestions, calculateResults, type QuizResult } from "@/lib/quiz-data"
 import { getProgramById } from "@/lib/programs-data"
 import Link from "next/link"
+
+// Helper function to get tool information for display
+function getToolInfo(toolPath: string) {
+  const toolMap: Record<string, { title: string; description: string; icon: any }> = {
+    "/resources/cbt/thought-record": {
+      title: "Thought Record",
+      description: "Track and challenge negative thinking patterns",
+      icon: Brain
+    },
+    "/resources/cbt/distortion-quiz": {
+      title: "Distortion Quiz", 
+      description: "Test your ability to identify thinking errors",
+      icon: Target
+    },
+    "/resources/cbt/trigger-map": {
+      title: "Trigger Mapper",
+      description: "Map your triggers and create coping strategies",
+      icon: Target
+    },
+    "/recovery-plan": {
+      title: "Recovery Plan",
+      description: "Build your personalized recovery plan",
+      icon: Heart
+    },
+    "/tracker": {
+      title: "Sobriety Tracker",
+      description: "Track your days of sobriety and milestones",
+      icon: Target
+    },
+    "/resources/mindfulness/meditation-timer": {
+      title: "Meditation Timer",
+      description: "Guided meditation sessions with customizable timing",
+      icon: Brain
+    },
+    "/resources/mindfulness/body-scan": {
+      title: "Body Scan",
+      description: "Guided body awareness meditation practice",
+      icon: Heart
+    },
+    "/resources/dbt/tipp": {
+      title: "TIPP Crisis Skills",
+      description: "Emergency techniques for intense emotions",
+      icon: Zap
+    },
+    "/resources/crisis": {
+      title: "Crisis Resources",
+      description: "Emergency support and crisis management",
+      icon: Zap
+    }
+  }
+  
+  return toolMap[toolPath]
+}
 
 export default function QuizPage() {
   const router = useRouter()
@@ -140,6 +193,48 @@ export default function QuizPage() {
                 )
               })}
             </div>
+
+            {/* Tool Recommendations */}
+            {results.recommendedTools && results.recommendedTools.length > 0 && (
+              <div className="space-y-4">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold mb-2">Recommended Interactive Tools</h3>
+                  <p className="text-muted-foreground text-sm">
+                    These evidence-based tools can support your recovery journey
+                  </p>
+                </div>
+                
+                <div className="grid gap-3 md:grid-cols-2">
+                  {results.recommendedTools.map((toolPath, index) => {
+                    const toolInfo = getToolInfo(toolPath)
+                    if (!toolInfo) return null
+                    
+                    return (
+                      <Card key={toolPath} className="hover:shadow-md transition-shadow">
+                        <CardContent className="p-4">
+                          <div className="flex items-start gap-3">
+                            <div className="p-2 bg-primary/10 rounded-lg">
+                              <toolInfo.icon className="h-5 w-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-sm mb-1">{toolInfo.title}</h4>
+                              <p className="text-xs text-muted-foreground mb-2">
+                                {toolInfo.description}
+                              </p>
+                              <Button size="sm" variant="outline" className="w-full" asChild>
+                                <Link href={toolPath}>
+                                  Try {toolInfo.title}
+                                </Link>
+                              </Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className="bg-muted/50 p-4 rounded-lg">
               <h3 className="font-semibold mb-2">Your Profile Scores:</h3>

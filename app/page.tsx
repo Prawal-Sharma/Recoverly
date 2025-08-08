@@ -101,15 +101,15 @@ export default function Home() {
             <Card>
               <CardHeader>
                 <BookOpen className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Educational Resources</CardTitle>
+                <CardTitle>Interactive Tools</CardTitle>
                 <CardDescription>
-                  Guides, articles, and tools to support your recovery journey
+                  11 evidence-based tools including CBT, DBT, mindfulness, and daily tracking
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Button variant="ghost" asChild>
                   <Link href="/resources">
-                    Browse Resources <ArrowRight className="ml-2 h-4 w-4" />
+                    Try Interactive Tools <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
@@ -308,6 +308,124 @@ export default function Home() {
             </Button>
             <p className="mt-4 text-sm text-muted-foreground">
               Compare approaches, philosophies, and find your perfect fit
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Tools Section */}
+      <section className="py-16 px-4 md:py-24">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              11 Interactive Recovery Tools
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Evidence-based tools to support your recovery journey daily
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  CBT Tools
+                  <span className="text-2xl font-bold text-primary">4</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Cognitive Behavioral Therapy exercises
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Thought Record</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Distortion Quiz</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Trigger Map</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  DBT Tools
+                  <span className="text-2xl font-bold text-primary">2</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Dialectical Behavior Therapy skills
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">TIPP Crisis Skills</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Daily Diary Card</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Mindfulness Tools
+                  <span className="text-2xl font-bold text-primary">3</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Meditation and mindfulness practices
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Meditation Timer</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Body Scan</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Breathing</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Daily Tools
+                  <span className="text-2xl font-bold text-primary">2</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Track progress and stay accountable
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Sobriety Tracker</span>
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Daily Check-in</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 hover:border-primary/50 transition-colors">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center justify-between">
+                  Planning Tools
+                  <span className="text-2xl font-bold text-primary">1</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Build your comprehensive recovery plan
+                </p>
+                <div className="flex flex-wrap gap-1">
+                  <span className="text-xs bg-muted px-2 py-1 rounded">Recovery Plan Builder</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/resources">
+                Explore All Interactive Tools <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Evidence-based tools you can use anytime, anywhere
             </p>
           </div>
         </div>
