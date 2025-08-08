@@ -12,8 +12,9 @@ import { Progress } from '@/components/ui/progress'
 import { 
   FileText, Target, Users, Shield, Calendar, 
   Download, Save, Plus, X, Edit, CheckCircle2,
-  AlertCircle, Heart, Phone, Home
+  AlertCircle, Heart, Phone, Home, Zap
 } from 'lucide-react'
+import Link from 'next/link'
 
 interface RecoveryPlan {
   id: string

@@ -11,7 +11,7 @@ import { Progress } from '@/components/ui/progress'
 import { 
   Sun, Moon, Target, Heart, Brain, Coffee, 
   Droplets, Activity, Award, TrendingUp, Calendar,
-  ChevronLeft, CheckCircle, Circle, Star
+  ChevronLeft, CheckCircle, Circle, Star, Trophy, Timer
 } from 'lucide-react'
 import Link from 'next/link'
 

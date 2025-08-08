@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Brain, Save, Download, Trash2, ChevronLeft, Calendar, TrendingDown, TrendingUp, Target, MapPin, Zap, Heart } from 'lucide-react'
+import { Brain, Save, Download, Trash2, ChevronLeft, Calendar, TrendingDown, TrendingUp, Target, MapPin, Zap, Heart, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 import { cognitiveDistortions } from '@/lib/cbt-data'
 

@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
   Play, Pause, RotateCcw, Volume2, VolumeX, ChevronLeft, 
-  Clock, Heart, Sparkles, Wind, Mountain, Waves
+  Clock, Heart, Sparkles, Wind, Mountain, Waves, Calendar
 } from 'lucide-react'
 import Link from 'next/link'
 
