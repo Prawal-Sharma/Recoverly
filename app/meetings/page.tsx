@@ -1,17 +1,16 @@
 import dynamic from "next/dynamic"
-import { Suspense } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, Globe, Users, Calendar, Clock } from "lucide-react"
+import { MapPin, Globe, Users } from "lucide-react"
 
 // Dynamic import with no SSR to prevent hydration issues
-const TSMLMeetingFinder = dynamic(
-  () => import("@/components/tsml-meeting-finder"),
+const MeetingFinder = dynamic(
+  () => import("@/components/meeting-finder").then(mod => ({ default: mod.MeetingFinder })),
   { 
     ssr: false,
     loading: () => (
-      <div className="flex items-center justify-center h-[600px] text-muted-foreground">
+      <div className="flex items-center justify-center h-[400px] text-muted-foreground">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p>Loading meeting finder...</p>
@@ -79,27 +78,10 @@ export default function MeetingsPage() {
         </Card>
       </div>
 
-      {/* TSML UI Integration */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Meeting Finder</CardTitle>
-          <CardDescription>
-            Search by location, day, time, or meeting type. Data provided by local recovery organizations.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Suspense fallback={
-            <div className="flex items-center justify-center h-[600px] text-muted-foreground">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                <p>Loading meeting finder...</p>
-              </div>
-            </div>
-          }>
-            <TSMLMeetingFinder />
-          </Suspense>
-        </CardContent>
-      </Card>
+      {/* Meeting Finder */}
+      <div className="mb-8">
+        <MeetingFinder />
+      </div>
 
       {/* Popular Online Meetings */}
       <div className="mb-8">
