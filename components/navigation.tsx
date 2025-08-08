@@ -208,11 +208,11 @@ export function Navigation() {
                 <NavigationMenuTrigger
                   onClick={(e) => {
                     if (e.ctrlKey || e.metaKey || e.shiftKey) {
-                      window.open('/resources', '_blank')
+                      window.open('/tools', '_blank')
                       e.preventDefault()
                     }
                   }}
-                  onDoubleClick={() => window.location.href = '/resources'}
+                  onDoubleClick={() => window.location.href = '/tools'}
                 >
                   Interactive Tools
                 </NavigationMenuTrigger>
@@ -256,10 +256,10 @@ export function Navigation() {
                     <div className="mt-4 pt-4 border-t">
                       <NavigationMenuLink asChild>
                         <Link
-                          href="/resources"
+                          href="/tools"
                           className="flex items-center text-sm text-primary hover:underline"
                         >
-                          View all resources
+                          View all interactive tools
                           <ChevronRight className="ml-1 h-4 w-4" />
                         </Link>
                       </NavigationMenuLink>
@@ -330,7 +330,7 @@ export function Navigation() {
               Find Meetings
             </Link>
             <Link
-              href="/resources"
+              href="/tools"
               className="block px-4 py-3 text-base font-medium bg-primary/10 hover:bg-primary/20 rounded-md focus:bg-primary/20 focus:outline-none focus:ring-2 focus:ring-primary min-h-[44px] flex items-center"
               onClick={() => setMobileMenuOpen(false)}
               role="menuitem"

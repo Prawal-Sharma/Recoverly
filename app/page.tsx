@@ -108,7 +108,7 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <Button variant="ghost" asChild>
-                  <Link href="/resources">
+                  <Link href="/tools">
                     Try Interactive Tools <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
