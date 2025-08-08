@@ -75,6 +75,7 @@ const resourceCategories = [
       { title: "TIPP Crisis Skills", href: "/resources/dbt/tipp", description: "Emergency DBT techniques" },
       { title: "Mindfulness", href: "/resources/mindfulness", description: "Meditation & breathing" },
       { title: "Breathing Exercises", href: "/resources/mindfulness/breathing", description: "Guided breathing techniques" },
+      { title: "Body Scan Guide", href: "/resources/mindfulness/body-scan", description: "Guided body awareness meditation" },
     ]
   },
   {
