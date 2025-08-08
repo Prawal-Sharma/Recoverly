@@ -386,7 +386,7 @@ export default function DiaryCardPage() {
                         <div
                           key={skill}
                           className={`p-3 border rounded-lg cursor-pointer transition-colors ${
-                            currentCard.skillsUsed![category as keyof typeof currentCard.skillsUsed].includes(skill)
+                            currentCard.skillsUsed && currentCard.skillsUsed[category as keyof typeof currentCard.skillsUsed]?.includes(skill)
                               ? 'bg-primary/10 border-primary'
                               : 'hover:bg-muted'
                           }`}

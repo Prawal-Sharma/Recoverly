@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
@@ -77,53 +77,18 @@ export default function MeditationTimerPage() {
     }
   }, [])
 
-  // Timer logic
-  useEffect(() => {
-    if (isRunning && timeRemaining > 0) {
-      intervalRef.current = setInterval(() => {
-        setTimeRemaining(prev => {
-          if (prev <= 1) {
-            handleComplete()
-            return 0
-          }
-          return prev - 1
-        })
-      }, 1000)
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
+  const playSound = useCallback((type: 'start' | 'complete' | 'interval') => {
+    if (!soundEnabled) return
+    // In a real app, you would play actual sounds here
+    // For now, we'll just use the browser's notification sound if available
+    if (type === 'complete') {
+      // Play a completion sound
+      const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjih')
+      audio.play().catch(() => {})
     }
+  }, [soundEnabled])
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
-    }
-  }, [isRunning, timeRemaining])
-
-  const handleStart = () => {
-    setIsRunning(true)
-    startTimeRef.current = Date.now()
-    elapsedRef.current = 0
-    playSound('start')
-  }
-
-  const handlePause = () => {
-    setIsRunning(false)
-    if (startTimeRef.current) {
-      elapsedRef.current += Date.now() - startTimeRef.current
-    }
-  }
-
-  const handleReset = () => {
-    setIsRunning(false)
-    setTimeRemaining(selectedDuration)
-    startTimeRef.current = 0
-    elapsedRef.current = 0
-  }
-
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
     setIsRunning(false)
     playSound('complete')
     
@@ -150,17 +115,52 @@ export default function MeditationTimerPage() {
     if (timeRemaining === 0) {
       alert('Meditation complete! Well done on completing your practice.')
     }
+  }, [selectedDuration, timeRemaining, selectedType, sessions, playSound])
+
+  // Timer logic
+  useEffect(() => {
+    if (isRunning && timeRemaining > 0) {
+      intervalRef.current = setInterval(() => {
+        setTimeRemaining(prev => {
+          if (prev <= 1) {
+            handleComplete()
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isRunning, timeRemaining, handleComplete])
+
+  const handleStart = () => {
+    setIsRunning(true)
+    startTimeRef.current = Date.now()
+    elapsedRef.current = 0
+    playSound('start')
   }
 
-  const playSound = (type: 'start' | 'complete' | 'interval') => {
-    if (!soundEnabled) return
-    // In a real app, you would play actual sounds here
-    // For now, we'll just use the browser's notification sound if available
-    if (type === 'complete') {
-      // Play a completion sound
-      const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjih')
-      audio.play().catch(() => {})
+  const handlePause = () => {
+    setIsRunning(false)
+    if (startTimeRef.current) {
+      elapsedRef.current += Date.now() - startTimeRef.current
     }
+  }
+
+  const handleReset = () => {
+    setIsRunning(false)
+    setTimeRemaining(selectedDuration)
+    startTimeRef.current = 0
+    elapsedRef.current = 0
   }
 
   const formatTime = (seconds: number) => {

@@ -284,7 +284,7 @@ export default function TrackerPage() {
               {daysSober}
             </CardTitle>
             <CardDescription className="text-xl">
-              Days free from {sobrietyData.substance}
+              Days free from {sobrietyData?.substance || 'substances'}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -299,11 +299,11 @@ export default function TrackerPage() {
               <div className="flex items-center justify-between">
                 <div className="text-sm">
                   <p className="text-muted-foreground">Started</p>
-                  <p className="font-medium">{new Date(sobrietyData.startDate).toLocaleDateString()}</p>
+                  <p className="font-medium">{sobrietyData ? new Date(sobrietyData.startDate).toLocaleDateString() : 'N/A'}</p>
                 </div>
                 <div className="text-sm text-right">
                   <p className="text-muted-foreground">Longest Streak</p>
-                  <p className="font-medium">{Math.max(sobrietyData.longestStreak, daysSober)} days</p>
+                  <p className="font-medium">{sobrietyData ? Math.max(sobrietyData.longestStreak, daysSober) : 0} days</p>
                 </div>
               </div>
             </div>
