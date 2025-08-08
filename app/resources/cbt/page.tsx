@@ -81,18 +81,18 @@ export default function CBTPage() {
           </Card>
 
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
-            <Link href="/resources/cbt/distortions">
+            <Link href="/resources/cbt/distortion-quiz">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
-                  Cognitive Distortions
+                  Distortion Quiz
                   <ChevronRight className="h-5 w-5" />
                 </CardTitle>
                 <CardDescription>
-                  Identify thinking errors that fuel addiction
+                  Test your ability to identify thinking patterns
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Badge variant="secondary">Educational</Badge>
+                <Badge variant="secondary">Interactive Quiz</Badge>
               </CardContent>
             </Link>
           </Card>
